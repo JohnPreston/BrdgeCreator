@@ -1,0 +1,5 @@
+---
+# defaults file for bridge-creator
+
+netscripts_path: /etc/sysconfig/network-scripts/
+bridge_number: 0

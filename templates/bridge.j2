@@ -1,0 +1,16 @@
+NAME=br{{ bridge_number }}
+DEVICE=br{{ bridge_number }}
+{% set avnet = 'ansible_' + iface_name %}
+IPADDR={{ hostvars[inventory_hostname][avnet]['ipv4']['address'] }}
+NETMASK={{ hostvars[inventory_hostname][avnet]['ipv4']['netmask'] }}
+{% if hostvars[inventory_hostname]['ansible_default_ipv4']['interface'] == iface_name %}
+GATEWAY={{ hostvars[inventory_hostname]['ansible_default_ipv4']['gateway'] }}
+{% endif %}
+IPV6INIT=no
+IPV6AUTOCONF=no
+DELAY=0
+STP=yes
+ONBOOT=yes
+BOOTPROTO="static"
+TYPE="Bridge"
+NOZEROCONF="yes"
