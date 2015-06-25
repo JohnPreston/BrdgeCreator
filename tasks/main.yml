@@ -3,10 +3,6 @@
 
 - name: Create the bridge template
   template: src=bridge.j2 dest="{{ netscripts_path }}/ifcfg-br{{ bridge_number }}"
-  when:
-  - not "{{ hostvars[inventory_hostname]['ansible_br' + bridge_number|string] }}"
 
 - name: Update the original iface config file
   template: src=iface.j2 dest="{{ netscripts_path }}/ifcfg-{{ iface_name }}"
-  when:
-  - not "{{ hostvars[inventory_hostname]['ansible_br' + bridge_number|string] }}"
